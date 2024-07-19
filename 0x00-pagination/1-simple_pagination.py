@@ -43,7 +43,7 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
-        This method takes  two integer arguments 'page' and 'page_size'
+        This method takes two integer arguments 'page' and 'page_size'
         with default values 1 and 10  and returns a the correct list of rows
         """
         assert isinstance(page, int)
