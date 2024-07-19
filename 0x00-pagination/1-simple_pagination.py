@@ -1,6 +1,25 @@
+#!/usr/bin/env python3
+"""Simple Pagination"""
+
 import csv
 import math
-from typing import List
+from typing import List, Tuple
+
+
+def index_range(page: int, page_size: int) -> Tuple:
+    """
+    This function takes in two integer arguments
+    'page' and 'page_size' and returns a tuple of size
+    two containing a start inde and an end index corresponding to the range
+    of indexes to return
+    """
+
+    if page - 1 == 0:
+        return (0, page_size)
+
+    start = (page - 1 ) * page_size
+    end = page * page_size
+    return (start , end)
 
 
 class Server:
@@ -23,4 +42,16 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-            pass
+        """
+        This method takes  two integer arguments 'page' and 'page_size'
+        with default values 1 and 10  and returns a the correct list of rows
+        """
+        assert isinstance(page, int)
+        assert isinstance(page_size, int)
+        assert page > 0
+        assert page_size > 0
+
+        self.dataset()
+        indexes = index_range(page, page_size)
+
+        return [data for data in self.__dataset[indexes[0]: indexes[1]] ]
