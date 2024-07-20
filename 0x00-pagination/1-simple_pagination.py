@@ -17,9 +17,9 @@ def index_range(page: int, page_size: int) -> Tuple:
     if page - 1 == 0:
         return (0, page_size)
 
-    start = (page - 1 ) * page_size
+    start = (page - 1) * page_size
     end = page * page_size
-    return (start , end)
+    return (start, end)
 
 
 class Server:
@@ -54,4 +54,4 @@ class Server:
         self.dataset()
         indexes = index_range(page, page_size)
 
-        return [data for data in self.__dataset[indexes[0]: indexes[1]] ]
+        return [data for data in self.__dataset[indexes[0]: indexes[1]]]
