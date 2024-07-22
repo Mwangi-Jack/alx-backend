@@ -40,25 +40,24 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
-            """
-            This method takes in two integer arguments 'index' with default value None
-            and 'page_size' with default value 10. The method then returns a ke-value
-            pair dictionary
-            """
+        """
+        This method takes in two integer arguments 'index' with
+        default value None and 'page_size' with default value 10.
+        The method then returns a key-value pair dictionary
+        """
 
-            assert index is not None and 0 <= index < len(self.dataset())
-            indexed_data = self.indexed_dataset()
-            data = []
-            current_index = index
+        assert index is not None and 0 <= index < len(self.dataset())
+        indexed_data = self.indexed_dataset()
+        data = []
+        current_index = index
 
-            while len(data) < page_size and current_index < len(indexed_data):
-                if current_index in indexed_data:
-                    data.append(indexed_data[current_index])
+        while len(data) < page_size and current_index < len(indexed_data):
+            if current_index in indexed_data:
+                data.append(indexed_data[current_index])
 
-                current_index += 1
+            current_index += 1
 
-            next_index = current_index
+        next_index = current_index
 
-            return {'index': index, 'next_index': next_index,
-                    'page_size': page_size, 'data': data}
-
+        return {'index': index, 'next_index': next_index,
+                'page_size': page_size, 'data': data}
