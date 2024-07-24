@@ -14,7 +14,6 @@ class LRUCache(BaseCaching):
         contents of the super class
         """
         super().__init__()
-        self.cache_data = {}
 
     def put(self, key, item):
         """
