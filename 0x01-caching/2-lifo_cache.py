@@ -1,24 +1,36 @@
-#!/usr/bin/env python3
+#!/usr/bin/evn python3
 
-"""Basic Cache that inherits from BaseCaching"""
+"""LIFO Caching"""
+
+from more_itertools import value_chain
+
 
 BaseCaching = __import__('base_caching').BaseCaching
 
 
-class BasicCache(BaseCaching):
-    """The BasicCache class"""
+class LIFOCache(BaseCaching):
+    """This defines a LIFO  caching class"""
+
     def __init__(self):
         """
-        This method initialized the BasicCache class
-        by calling the super class
+        This method initializes the class with the
+        contents of the super class
         """
         super().__init__()
+
 
     def put(self, key, item):
         """
         This method adds a key-value pair to the cache_data
         """
         if key and item:
+            cache_length = len(self.cache_data.keys())
+            if cache_length >= BaseCaching.MAX_ITEMS:
+                last_item_key = list(self.cache_data.keys())[cache_length - 1]
+
+                print(f'DISCARD {last_item_key}')
+                del self.cache_data[last_item_key]
+
             self.cache_data[key] = item
 
     def get(self, key):
