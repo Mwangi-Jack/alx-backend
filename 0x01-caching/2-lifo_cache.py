@@ -24,14 +24,15 @@ class LIFOCache(BaseCaching):
         This method adds a key-value pair to the cache_data
         """
         if key and item:
-            cache_length = len(self.cache_data.keys())
-            if cache_length >= BaseCaching.MAX_ITEMS:
-                last_item_key = list(self.cache_data.keys())[cache_length - 1]
-
-                print(f'DISCARD {last_item_key}')
-                del self.cache_data[last_item_key]
-
-            self.cache_data[key] = item
+            if self.cache_data.get(key):
+                self.cache_data[key] = item
+            else:
+                cache_length = len(self.cache_data.keys())
+                if cache_length == BaseCaching.MAX_ITEMS:
+                    last_item_key = list(self.cache_data.keys())[cache_length - 1]
+                    print(f'DISCARD: {last_item_key}')
+                    del self.cache_data[last_item_key]
+                self.cache_data[key] = item
 
     def get(self, key):
         """
