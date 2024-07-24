@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 """LIFO Caching"""
+from collections import OrderedDict
 
 BaseCaching = __import__('base_caching').BaseCaching
 
@@ -14,16 +15,19 @@ class LRUCache(BaseCaching):
         contents of the super class
         """
         super().__init__()
+        self.cache_data = OrderedDict()
 
     def put(self, key, item):
         """
         This method adds a key-value pair to the cache_data
         """
         if key and item:
-            self.cache_data[key] = item
-            if len(self.cache_data.keys()) > BaseCaching.MAX_ITEMS:
-                first_key = list(self.cache_data.keys())[0]
+            if key in self.cache_data:
+                self.cache_data.move_to_end(key)
 
+            self.cache_data[key] = item
+            if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+                first_key = next(iter(self.cache_data))
                 print(f'DISCARD: {first_key}')
                 del self.cache_data[first_key]
 
