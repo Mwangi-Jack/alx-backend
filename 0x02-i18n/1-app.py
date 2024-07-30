@@ -22,6 +22,7 @@ def index():
     """this method gets the root page of the app"""
     return render_template('1-index.html')
 
+
 @babel.localeselector
 def get_locale():
     """Gets the locale language"""
