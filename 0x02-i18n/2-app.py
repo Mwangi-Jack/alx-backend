@@ -13,14 +13,14 @@ class Config:
     """This class defines the configuration of the app"""
 
     LANGUAGES = ["en", "fr"]
-    BABEL_DEFAULT_LOCALE = "en"
+    BABEL_DEFAULT_LOCALE = "fr"
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
 @app.route('/')
 def index():
     """this method gets the root page of the app"""
-    return render_template('1-index.html')
+    return render_template('2-index.html')
 
 
 @babel.localeselector
