@@ -15,7 +15,6 @@ class Config:
     """This class defines the configuration of the app"""
 
     LANGUAGES = ['en', 'fr']
-    TIMEZONE = 'UTC'
 
 
 app.config['DEFAULT_LOCALE'] = "en"
