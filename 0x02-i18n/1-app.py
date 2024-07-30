@@ -4,6 +4,7 @@
 from typing import Callable
 from flask import Flask, render_template
 from flask_babel import Babel
+import config
 
 app = Flask(__name__)
 
@@ -11,6 +12,7 @@ app.config['DEFAULT_LOCALE'] = "en"
 app.config['DEFAULT_TIMEZONE'] = "UTC"
 
 babel = Babel(app)
+
 
 @app.route('/')
 def index() -> Callable:
