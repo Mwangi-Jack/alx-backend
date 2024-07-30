@@ -5,5 +5,5 @@
 class Config:
     """This class defines the configuration of the app"""
 
-    LANGUAGES = ['en', 'fr', 'es', 'sw']
+    LANGUAGES = ['en', 'fr']
     TIMEZONE = 'UTC'
