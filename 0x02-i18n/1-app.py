@@ -20,8 +20,7 @@ class Config:
 app.config['DEFAULT_LOCALE'] = "en"
 app.config['DEFAULT_TIMEZONE'] = "UTC"
 
-@app.config
 @app.route('/')
 def index() -> Callable:
     """this method gets the root page of the app"""
-    return render_template('0-index.html')
+    return render_template('1-index.html')
