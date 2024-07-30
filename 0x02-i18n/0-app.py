@@ -10,5 +10,4 @@ app = Flask(__name__)
 @app.route('/')
 def index() -> Callable:
     """this method gets the root page of the app"""
-    return render_template('0-index.html',
-                           title='Welcome to Holberton', header='Hello world')
+    return render_template('0-index.html')
