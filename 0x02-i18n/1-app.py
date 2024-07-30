@@ -4,20 +4,11 @@
 from typing import Callable
 from flask import Flask, render_template
 from flask_babel import Babel
-
+from config import Config
 
 app = Flask(__name__)
 
 babel = Babel(app)
-
-
-class Config:
-    """This class defines the configuration of the app"""
-
-    LANGUAGES = ['en', 'fr']
-    DEFAULT_LOCALE = 'en'
-    DEFAULT_TIMEZONE = 'UTC'
-
 
 app.config.from_object(Config)
 
