@@ -5,6 +5,6 @@
 class Config:
     """This class defines the configuration of the app"""
 
-    LANGUAGES = ['en', 'fr']
-    DEFAULT_TIMEZONE = "UTC"
-    DEFAULT_LOCALE = "en"
+    LANGUAGES = ["en", "fr"]
+    BABEL_DEFAULT_TIMEZONE = "UTC"
+    BABEL_DEFAULT_LOCALE = "en"
