@@ -1,22 +1,13 @@
 #!/usr/bin/env python3
+"""This file defines the routes"""
 
-from flask import Flask, render_template, request
-
-from flask_babel import Babel
+from flask import Flask, render_template
 
 app = Flask(__name__)
-
-
-def get_locale():
-    """gets the language"""
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
-
-
-babel = Babel(locale_selector=get_locale)
 
 
 @app.route('/')
 def index():
     """this method gets the root page of the app"""
-    return render_template('0-index.html',
+    return render_template('index.html',
                            title='Welcome to Holberton', header='Hello world')
