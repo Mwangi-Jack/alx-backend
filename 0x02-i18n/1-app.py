@@ -15,10 +15,11 @@ class Config:
     """This class defines the configuration of the app"""
 
     LANGUAGES = ['en', 'fr']
+    DEFAULT_LOCALE = 'en'
+    DEFAULT_TIMEZONE = 'UTC'
 
 
-app.config['DEFAULT_LOCALE'] = "en"
-app.config['DEFAULT_TIMEZONE'] = "UTC"
+app.config.from_object(Config)
 
 
 @app.route('/')
